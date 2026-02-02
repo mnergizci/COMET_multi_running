@@ -1,2 +1,2 @@
 # COMET_multi_running
-This repository inlcudes the bash scripts to submit multitple frame tasks for  COMET nla, LiCSAR, LiCSBAS running in Jasmin 
+This repository includes the bash scripts to submit multiple frame tasks for  COMET nla, LiCSAR, LiCSBAS running in Jasmin 
