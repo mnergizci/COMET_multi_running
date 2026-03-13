@@ -114,11 +114,11 @@ while read -r i; do
         elif [[ "$eqoff_flag" == "yes" ]]; then
             sbatch --qos=high --output=preprocess/preprocessing_jasmin${i}.out --error=preprocess/preprocessing_jasmin${i}.err \
             --job-name=prepros_LB_${i} -n 8 --time=47:59:00 --mem=65536 -p comet --account=comet_lics --partition=standard \
-            --wrap="licsar2licsbas.sh -M 10 -Z -g -n 8 -W -N -T -i -e -u -t 0.2 -d -E 6 -p -O -X ${i} ${start_date} ${end_date}"
+            --wrap="licsar2licsbas.sh -W -M 10 -Z -g -n 8 -N -T -i -e -u -t 0.2 -d -E 6 -p -O -X ${i} ${start_date} ${end_date}"
         else
             sbatch --qos=high --output=preprocess/preprocessing_jasmin${i}.out --error=preprocess/preprocessing_jasmin${i}.err \
             --job-name=prepros_LB_${i} -n 8 --time=47:59:00 --mem=65536 -p comet --account=comet_lics --partition=standard \
-            --wrap="licsar2licsbas.sh -M 10 -Z -g -n 8 -W -N -T -i -e -u -t 0.2 -d -p -O -X ${i} ${start_date} ${end_date}"
+            --wrap="licsar2licsbas.sh -W -M 10 -Z -g -n 8 -N -T -i -e -u -t 0.2 -d -p -O -X ${i} ${start_date} ${end_date}"
         fi
     else
         # Run using tmux
@@ -143,9 +143,9 @@ while read -r i; do
             fi
             
         elif [[ "$eqoff_flag" == "yes" ]]; then
-            tmux_command+="licsar2licsbas.sh -M 10 -Z -g -n 8 -W -N -T -i -e -u -t 0.2 -d -E 6 -p -O '$i' '$start_date' '$end_date'"
+            tmux_command+="licsar2licsbas.sh -W -M 10 -Z -g -n 8 -N -T -i -e -u -t 0.2 -d -E 6 -p -O '$i' '$start_date' '$end_date'"
         else
-            tmux_command+="licsar2licsbas.sh -M 10 -Z -g -n 8 -W -N -T -i -e -u -t 0.2 -d -p -O '$i' '$start_date' '$end_date'"
+            tmux_command+="licsar2licsbas.sh -W -M 10 -Z -g -n 8 -N -T -i -e -u -t 0.2 -d -p -O '$i' '$start_date' '$end_date'"
         fi
 
         tmux_command+=" >> '${log_dir}/${i}_out.log' 2>> '${log_dir}/${i}_err.log' && echo 'Job for $i completed; bash'"
