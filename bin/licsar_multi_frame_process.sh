@@ -82,15 +82,15 @@ while read -r i; do
         echo "Skipping invalid frame: $i"
         continue
     fi
-    session_name="${i}_${current_dir_suffix}"
+    session_name="${i}_make_frame"
     echo $session_name
 
     # Determine command based on batch mode flag
     # if [ "$batch_mode" = true ]; then
     if [ "$terminal_mode" = true ]; then
-        run_command="batch2; local_mn;licsar_make_frame.sh -T -f '$i' 0 1 '$start_date' '$end_date'"
+        run_command="local_mn;licsar_make_frame.sh -T -f '$i' 0 1 '$start_date' '$end_date'"
     else    
-        run_command="batch2; local_mn;licsar_make_frame.sh -f '$i' 0 1 '$start_date' '$end_date'"
+        run_command="local_mn;licsar_make_frame.sh -f '$i' 0 1 '$start_date' '$end_date'"
     fi
         # else
         #     if [ "$terminal_mode" = true ]; then

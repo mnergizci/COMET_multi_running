@@ -57,7 +57,7 @@ end_date="${end_date:0:4}-${end_date:4:2}-${end_date:6:2}"
 
 # Change to batch directory if it exists
 if [ "$batch_mode" = true ]; then
-    batch2
+    batch5
 fi
 
 if [ -n "$BATCH_CACHE_DIR" ] && [ -d "$BATCH_CACHE_DIR" ]; then
@@ -79,15 +79,15 @@ while read -r i; do
         echo "Skipping invalid frame: $i"
         continue
     fi
-    session_name="${i}_${current_dir_suffix}"
+    session_name="${i}_nla_req"
     echo $session_name
 
     # Determine command based on batch mode flag
     if [ "$batch_mode" = true ]; then
-        run_command="batch2; LiCSAR_0_getFiles.py -f '$i' -s '$start_date' -e '$end_date' -r -b Y -n "		
+        run_command="batch5; LiCSAR_0_getFiles.py -f '$i' -s '$start_date' -e '$end_date' -r -b Y -n "		
 
     else
-        run_command="batch3; LiCSAR_0_getFiles.py -f '$i' -s '$start_date' -e '$end_date' -r -b Y -n"
+        run_command="batch4; LiCSAR_0_getFiles.py -f '$i' -s '$start_date' -e '$end_date' -r -b Y -n"
     fi
 
     tmux new-session -d -s "$session_name" \

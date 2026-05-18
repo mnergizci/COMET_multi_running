@@ -5,7 +5,7 @@
 
 # Function to display usage
 usage() {
-    echo "Usage: $0 --batch <batch2|batch3> <frames_file>"
+    echo "Usage: $0 --batch <batch5|batch3> <frames_file>"
     exit 1
 }
 
@@ -22,11 +22,11 @@ frames_file=""
 while [[ $# -gt 0 ]]; do
     case $1 in
         --batch)
-            if [[ "$2" == "batch2" || "$2" == "batch3" ]]; then
+            if [[ "$2" == "batch5" || "$2" == "batch3" ]]; then
                 batch_option="$2"
                 shift 2
             else
-                echo "Error: Invalid batch option. Use 'batch2' or 'batch3'."
+                echo "Error: Invalid batch option. Use 'batch5' or 'batch3'."
                 usage
             fi
             ;;
@@ -57,7 +57,7 @@ while read -r i; do
         continue
     fi
 
-    session_name="${i}_${current_dir_suffix}_gapfill"
+    session_name="${i}_gapfill"
     echo "Starting session: $session_name"
 
     # Check if directory exists before executing

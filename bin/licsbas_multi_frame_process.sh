@@ -4,7 +4,7 @@
 
 # Function to display usage
 usage() {
-    echo "Usage: $0 <frames_file> [-s start_date] [-e end_date] [--local] [--sbovl] [--eqoff] [--corrections] [--abs]"
+    echo "Usage: $0 <frames_file> [-s start_date] [-e end_date] [--local] [--sboi] [--eqoff] [--corrections] [--abs]"
     exit 1
 }
 
@@ -38,7 +38,7 @@ while [[ $# -gt 0 ]]; do
             local_flag="yes"
             shift
             ;;
-        --sbovl)
+        --sboi)
             sboi_flag="yes"
             shift
             ;;
@@ -86,7 +86,7 @@ while read -r i; do
         continue
     fi
 
-    session_name="${i}_${current_dir_suffix}"
+    session_name="${i}_licsbas"
     echo "Starting session: $session_name"
 
     if [[ "$corrections_flag" == "yes" ]]; then
